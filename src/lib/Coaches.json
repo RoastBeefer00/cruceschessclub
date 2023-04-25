@@ -1,0 +1,48 @@
+{
+    "Coaches": [
+        {
+            "Name": "Travis Dent",
+            "Strengths": [
+                "Openings",
+                "Building a reportoire",
+                "Fundamentals",
+                "Middle Game"
+            ],
+            "Phone": "(940) 597-5923",
+            "Email": "travisdent080@gmail.com",
+            "Picture": "travis_dent.jpg"
+        },
+        {
+            "Name": "Will Barela",
+            "Strengths": [
+                "Talking shit",
+                "Experienced coach",
+                "Nice guy"
+            ],
+            "Phone": "(575) 449-5807",
+            "Email": "wibarela@nmsu.edu",
+            "Picture": "will.jpg"
+        },
+        {
+            "Name": "Jesse Vick",
+            "Strengths": [
+                "Chess master",
+                "Experienced coach",
+                "End games"
+            ],
+            "Phone": "(575) 649-4561",
+            "Email": "jess3v777@gmail.com",
+            "Picture": "jesse_vick.jpg"
+        },
+        {
+            "Name": "Jake Jasmin",
+            "Strengths": [
+                "Fundamentals",
+                "Openings"
+            ],
+            "Phone": "(507) 219-7051",
+            "Email": "jacob.jasmin.94@gmail.com",
+            "Picture": "jake_jasmin.jpg"
+        }
+    ]
+}
