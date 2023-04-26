@@ -1,13 +1,13 @@
 <script>
     import Bio from "./Bio.svelte";
-    import Coaches from "../lib/Coaches.json";
+    import Coaches from "$lib/Coaches.json";
 
 </script>
 
-<section class="hero is-dark m-6">
-    <div class="hero-body">
+<section class="container p-3">
+    <div class="notification is-dark mx-auto">
         <h2 class="title is-2">Meet our coaches</h2>
-        <p> 
+        <p class="subtitle"> 
             Looking to improve your game?  We've got you covered.  
             No matter where you are on your chess journey we have a coach 
             who can guide you to victory.
