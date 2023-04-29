@@ -53,7 +53,9 @@
       <a href="/schedule" class="navbar-item{path == "/schedule" ? " is-active": ""}" on:click={toggleBurger}>
         Schedule
       </a>
-
+      <a href="/gallery" class="navbar-item{path == "/gallery" ? " is-active": ""}" on:click={toggleBurger}>
+        Gallery
+      </a>
     </div>
   </div>
 </nav>
