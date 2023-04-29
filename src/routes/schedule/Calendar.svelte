@@ -3,20 +3,7 @@
 
   let wednesdays = getWednesdays(month);
 
-  let months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-  ]
+  import { months } from './months';
 
   let bars = [
     {
