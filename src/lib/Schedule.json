@@ -1,0 +1,130 @@
+{
+    "January": [
+        {
+            "name": "Amaro Winery",
+            "address": "402 S Melendres St, Las Cruces, NM 88005"
+        },
+        {
+            "name": "IHOP",
+            "address": "2900 N Telshor Blvd, Las Cruces, NM 88011"
+        }
+    ],
+    "February": [
+        {
+            "name": "Amaro Winery",
+            "address": "402 S Melendres St, Las Cruces, NM 88005"
+        },
+        {
+            "name": "IHOP",
+            "address": "2900 N Telshor Blvd, Las Cruces, NM 88011"
+        }
+    ],
+    "March": [
+        {
+            "name": "Amaro Winery",
+            "address": "402 S Melendres St, Las Cruces, NM 88005"
+        },
+        {
+            "name": "IHOP",
+            "address": "2900 N Telshor Blvd, Las Cruces, NM 88011"
+        }
+    ],
+    "April": [
+        {
+            "name": "Amaro Winery",
+            "address": "402 S Melendres St, Las Cruces, NM 88005"
+        },
+        {
+            "name": "IHOP",
+            "address": "2900 N Telshor Blvd, Las Cruces, NM 88011"
+        },
+        {
+            "name": "Boneyard Cantina (21+)",
+            "address": "139 N Main St, Las Cruces, NM 88001"
+        },
+        {
+            "name": "Amador Patio Bar",
+            "address": "302 S Main St Suite B, Las Cruces, NM 88001"
+        }
+    ],
+    "May": [
+        {
+            "name": "Amaro Winery",
+            "address": "402 S Melendres St, Las Cruces, NM 88005"
+        },
+        {
+            "name": "IHOP",
+            "address": "2900 N Telshor Blvd, Las Cruces, NM 88011"
+        }
+    ],
+    "June": [
+        {
+            "name": "Amaro Winery",
+            "address": "402 S Melendres St, Las Cruces, NM 88005"
+        },
+        {
+            "name": "IHOP",
+            "address": "2900 N Telshor Blvd, Las Cruces, NM 88011"
+        }
+    ],
+    "July": [
+        {
+            "name": "Amaro Winery",
+            "address": "402 S Melendres St, Las Cruces, NM 88005"
+        },
+        {
+            "name": "IHOP",
+            "address": "2900 N Telshor Blvd, Las Cruces, NM 88011"
+        }
+    ],
+    "August": [
+        {
+            "name": "Amaro Winery",
+            "address": "402 S Melendres St, Las Cruces, NM 88005"
+        },
+        {
+            "name": "IHOP",
+            "address": "2900 N Telshor Blvd, Las Cruces, NM 88011"
+        }
+    ],
+    "September": [
+        {
+            "name": "Amaro Winery",
+            "address": "402 S Melendres St, Las Cruces, NM 88005"
+        },
+        {
+            "name": "IHOP",
+            "address": "2900 N Telshor Blvd, Las Cruces, NM 88011"
+        }
+    ],
+    "October": [
+        {
+            "name": "Amaro Winery",
+            "address": "402 S Melendres St, Las Cruces, NM 88005"
+        },
+        {
+            "name": "IHOP",
+            "address": "2900 N Telshor Blvd, Las Cruces, NM 88011"
+        }
+    ],
+    "November": [
+        {
+            "name": "Amaro Winery",
+            "address": "402 S Melendres St, Las Cruces, NM 88005"
+        },
+        {
+            "name": "IHOP",
+            "address": "2900 N Telshor Blvd, Las Cruces, NM 88011"
+        }
+    ],
+    "December": [
+        {
+            "name": "Amaro Winery",
+            "address": "402 S Melendres St, Las Cruces, NM 88005"
+        },
+        {
+            "name": "IHOP",
+            "address": "2900 N Telshor Blvd, Las Cruces, NM 88011"
+        }
+    ]
+}
