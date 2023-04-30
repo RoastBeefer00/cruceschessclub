@@ -19,7 +19,7 @@
   
 </script>
 
-<nav class="navbar is-dark" aria-label="main navigation">
+<nav class="navbar is-dark is-fixed-top" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="/">
       <img src="chess-solid.svg" width="28" height="28" alt="chess">

@@ -1,5 +1,6 @@
 <script>
     import { writable } from 'svelte/store';
+    import { fly, fade } from 'svelte/transition';
     
     const images = writable([]);
     const imageModules = import.meta.glob("/static/club_pics/*.jpeg");
@@ -34,7 +35,7 @@
 {#each [$images[index]] as src (index)}
 <div class="column is-desktop is-two-thirds is-offset-2">
   <div class="box mx-auto my-3 p-2">
-    <figure class="image mb-2">
+    <figure class="image mb-2"  in:fade="{{ duration: 400 }}">
       <img class="mx-auto" src="{src}" alt="club">
     </figure>
     <div class="columns is-mobile">
@@ -57,14 +58,18 @@
 
 <style>
   .box {
-    max-height: 80vh;
+    height: 60vh;
     max-width: 80vw;
   }
 
   .box img {
     height: auto;
     width: auto;
-    max-height: 75vh;
+    max-height: 50vh;
     max-width: 75vw;
+  }
+
+  .box figure {
+    height: 50vh;
   }
 </style>
