@@ -1,21 +1,12 @@
 <script>
+  import { months } from './months';
+  import Schedule from '$lib/Schedule.json';
+
   export let month;
 
   let wednesdays = getWednesdays(month);
-
-  import { months } from './months';
-
-  let bars = [
-    {
-      "name": "Amaro Winery",
-      "address": "402 S Melendres St, Las Cruces, NM 88005"
-    },
-    {
-      "name": "Lucky Dog Billiards",
-      "address": "245 E Lohman Ave, Las Cruces, NM 88001"
-    },
-  ]
-
+  let month_name = months[month];
+  let bars = Schedule[month_name];
 
   function getWednesdays(month_index) {
     var current_date = new Date();
@@ -42,7 +33,7 @@
 </script>
 
 
-<h2 class="title is-2 has-text-centered has-text-black"> {months[wednesdays[0].getMonth()]} </h2>
+<h2 class="title is-2 has-text-centered has-text-black"> {month_name} </h2>
 
 <table class="table mx-auto is-bordered is-striped m-3">
   <thead>
@@ -58,7 +49,7 @@
         <td> {bars[count].name} </td>
         <td> {bars[count].address} </td>
       {:else}
-        <td></td>
+        <td>TBD</td>
         <td></td>
       {/if}
     </tr>
