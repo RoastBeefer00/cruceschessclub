@@ -55,6 +55,14 @@
         {
             "name": "IHOP",
             "address": "2900 N Telshor Blvd, Las Cruces, NM 88011"
+        },
+        {
+            "name": "Bosque Brewing",
+            "address": "901 E University Ave Bldg 945 Ste 3-A, Las Cruces, NM 88001"
+        },
+        {
+            "name": "ToC Brewing",
+            "address": "2001 E Lohman Ave Suite #115, Las Cruces, NM 88001"
         }
     ],
     "June": [
