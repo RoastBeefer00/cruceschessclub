@@ -3,20 +3,12 @@
   import { page } from "$app/stores";
 
   let burgerOpen = false;
-  let selected = 0;
   
   function toggleBurger() {
     burgerOpen = !burgerOpen;
   }
 
-  function handleSelect(id) {
-    selected = id;
-    toggleBurger();
-  }
-
-  $: path = $page.url.pathname;
-
-  
+   $: path = $page.url.pathname;
 </script>
 
 <nav class="navbar is-dark is-fixed-top" aria-label="main navigation">
@@ -56,6 +48,13 @@
       <a href="/gallery" class="navbar-item{path == "/gallery" ? " is-active": ""}" on:click={toggleBurger}>
         Gallery
       </a>
+    </div>
+    <div class="navbar-end">
+        <button class="button is-success m-2" on:click={toggleBurger}>
+            <a href="/donate" class="has-text-white">
+                DONATE
+            </a>
+        </button> 
     </div>
   </div>
 </nav>
