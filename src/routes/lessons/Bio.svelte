@@ -1,10 +1,4 @@
 <script>
-    let is_modal_hidden = true;
-
-    function toggle_modal() {
-        is_modal_hidden = !is_modal_hidden;
-    }
-    
     export let person;
 </script>
 
