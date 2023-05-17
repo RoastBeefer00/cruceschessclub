@@ -10,14 +10,14 @@
             ],
             "Phone": "(940) 597-5923",
             "Email": "travisdent080@gmail.com",
-            "Picture": "travis_dent.jpg"
+            "Picture": "travis_dent.png"
         },
         {
             "Name": "Will Barela",
             "Strengths": [
-                "Talking shit",
                 "Experienced coach",
-                "Nice guy"
+                "Scholastic chess director",
+                "All experience levels"
             ],
             "Phone": "(575) 449-5807",
             "Email": "wibarela@nmsu.edu",
@@ -30,9 +30,15 @@
                 "Experienced coach",
                 "End games"
             ],
+            "Bio": [
+                "Jesse Vick is a National Chess Expert affiliated with the US Chess Federation. With an impressive 21 years of experience in the chess world, Jesse's passion for the game knows no bounds.",
+                "Hailing from the vibrant chess community of the Dallas-Fort Worth region, Jesse's journey began as a scholastic champion. Throughout the years, he has honed his skills, becoming a beacon of excellence in the chess world.",
+                "Jesse has generously shared his knowledge and expertise with numerous players and clubs. Notably, he has served as a coach for the renowned Arrowhead Park Early College High School (APECHS), fostering a culture of chess excellence among the students.",
+                "Jesse is thrilled to guide and inspire local players in their pursuit of chess mastery. Whether you're a novice seeking to learn the game or an aspiring competitor looking to improve your skills, Jesse is ready to offer his expertise and support." 
+            ],
             "Phone": "(575) 649-4561",
             "Email": "jess3v777@gmail.com",
-            "Picture": "jesse_vick.jpg"
+            "Picture": "jesse_vick.png"
         },
         {
             "Name": "Jake Jasmin",
