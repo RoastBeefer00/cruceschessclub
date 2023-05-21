@@ -1,27 +1,16 @@
 {
     "Coaches": [
         {
-            "Name": "Travis Dent",
+            "Name": "Ron Farrar",
             "Strengths": [
-                "Openings",
-                "Building a reportoire",
                 "Fundamentals",
-                "Middle Game"
+                "Stategic/positional concepts",
+                "Endgame",
+                "Pawn structures"
             ],
-            "Phone": "(940) 597-5923",
-            "Email": "travisdent080@gmail.com",
-            "Picture": "travis_dent.png"
-        },
-        {
-            "Name": "Will Barela",
-            "Strengths": [
-                "Experienced coach",
-                "Scholastic chess director",
-                "All experience levels"
-            ],
-            "Phone": "(575) 449-5807",
-            "Email": "wibarela@nmsu.edu",
-            "Picture": "will.jpg"
+            "Phone": "(303) 901-8422",
+            "Email": "",
+            "Picture": "ron_f.jpeg"
         },
         {
             "Name": "Jesse Vick",
@@ -39,6 +28,29 @@
             "Phone": "(575) 649-4561",
             "Email": "jess3v777@gmail.com",
             "Picture": "jesse_vick.png"
+        },
+        {
+            "Name": "Will Barela",
+            "Strengths": [
+                "Experienced coach",
+                "Scholastic chess director",
+                "All experience levels"
+            ],
+            "Phone": "(575) 449-5807",
+            "Email": "wibarela@nmsu.edu",
+            "Picture": "will.jpg"
+        },
+        {
+            "Name": "Travis Dent",
+            "Strengths": [
+                "Openings",
+                "Building a reportoire",
+                "Fundamentals",
+                "Middle Game"
+            ],
+            "Phone": "(940) 597-5923",
+            "Email": "travisdent080@gmail.com",
+            "Picture": "travis_dent.png"
         },
         {
             "Name": "Jake Jasmin",
