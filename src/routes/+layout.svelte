@@ -22,7 +22,7 @@
 <nav class="navbar is-dark is-fixed-top" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="/">
-      <img src="ccc.png" width="40" height="40" alt="chess">
+      <img src="ccc.png" width="30" height="40" alt="chess">
     </a>
     <a href="/" class="navbar-item">
       Cruces Chess Club
