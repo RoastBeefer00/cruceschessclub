@@ -56,6 +56,9 @@
       <a href="/gallery" class="navbar-item{path == "/gallery" ? " is-active": ""}" on:click={toggleBurger}>
         Gallery
       </a>
+      <a href="/tournaments" class="navbar-item{path == "/tournaments" ? " is-active": ""}" on:click={toggleBurger}>
+        Tournaments
+      </a>
     </div>
   </div>
 </nav>
