@@ -117,6 +117,14 @@
         {
             "name": "The Game Sports Bar and Grill",
             "address": "2605 S Espina St, Las Cruces, NM 88001"
+        },
+        {
+            "name": "Bosque Brewing",
+            "address": "901 E University Ave Bldg 945 Ste 3-A, Las Cruces, NM 88001"
+        },
+        {
+            "name": "Boneyard Cantina", 
+            "address": "139 N Main St, Las Cruces, NM 88001"
         }
     ],
     "September": [

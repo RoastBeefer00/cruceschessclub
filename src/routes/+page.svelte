@@ -25,7 +25,7 @@
 
   <!-- Bottom banner -->
   <div class="navbar is-flex-touch is-fixed-bottom">
-      <a class="mx-auto" href="https://www.chess.com/club/las-cruces-chess">
+      <a class="mx-auto" href="https://www.chess.com/club/cruces-chess-club">
           <img class="mx-auto" alt="bottom banner" src="affiliate/Digital Leaderboard Ad.png">
       </a>
 
