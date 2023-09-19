@@ -135,6 +135,10 @@
         {
             "name": "IHOP",
             "address": "2900 N Telshor Blvd, Las Cruces, NM 88011"
+        },
+        {
+            "name": "Valley Pizza",
+            "address": "3100 W Picacho Ave, Las Cruces, NM 88007"
         }
     ],
     "October": [
