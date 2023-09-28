@@ -139,6 +139,10 @@
         {
             "name": "Valley Pizza",
             "address": "3100 W Picacho Ave, Las Cruces, NM 88007"
+        },
+        {
+            "name": "Boneyard Cantina",
+            "address": "139 N Main St, Las Cruces, NM 88001"
         }
     ],
     "October": [
