@@ -7,11 +7,8 @@
     let month = writable(current_date.getMonth());
 
     function handleSelect(choice) {
-        if (choice > 11) {
-            $month = choice - 12;
-        } else {
-            $month = choice;
-        }
+        console.log("Month: " + choice)
+        $month = choice;
     }
 
     function getAdjustedMonth(month) {
@@ -36,32 +33,32 @@
         <div class="field is-grouped">
             <div class="control mx-auto">
                 <button 
-                    class="button { $month == getAdjustedMonth(current_date.getMonth()) ? "is-dark" : "is-light"}"
+                    class="button { $month == current_date.getMonth() ? "is-dark" : "is-light"}"
                     on:click={() => handleSelect(current_date.getMonth())}
                 >
                     {months[getAdjustedMonth(current_date.getMonth())]}
                 </button>
                 <button 
-                    class="button { $month == getAdjustedMonth(current_date.getMonth()+1) ? "is-dark" : "is-light"}"
+                    class="button { $month == current_date.getMonth()+1 ? "is-dark" : "is-light"}"
                     on:click={() => handleSelect(current_date.getMonth()+1)}
                 >
                     {months[getAdjustedMonth(current_date.getMonth()+1)]}
                 </button>
                 <button 
-                    class="button { $month == getAdjustedMonth(current_date.getMonth()+2) ? "is-dark" : "is-light"}"
+                    class="button { $month == current_date.getMonth()+2 ? "is-dark" : "is-light"}"
                     on:click={() => handleSelect(current_date.getMonth()+2)}    
                 >
                     {months[getAdjustedMonth(current_date.getMonth()+2)]}
                 </button>
             </div>
         </div>
-        {#if $month == getAdjustedMonth(current_date.getMonth())}
+        {#if $month == current_date.getMonth()}
             <Calendar month={$month}/>
         {/if}
-        {#if $month == getAdjustedMonth(current_date.getMonth()+1)}
+        {#if $month == current_date.getMonth()+1}
             <Calendar month={$month}/>
         {/if} 
-        {#if $month == getAdjustedMonth(current_date.getMonth()+2)}
+        {#if $month == current_date.getMonth()+2}
             <Calendar month={$month}/>
         {/if}      
     </div>

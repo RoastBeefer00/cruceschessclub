@@ -5,13 +5,26 @@
   export let month;
 
   let wednesdays = getWednesdays(month);
-  let month_name = months[month];
+  let month_name;
+  if (month > 11) {
+    month_name = months[month-12];
+  } else {
+    month_name = months[month];
+  }
   let bars = Schedule[month_name];
 
   function getWednesdays(month_index) {
     var current_date = new Date();
-    var year = current_date.getFullYear();
-    var d = new Date(year, month_index),
+    var month = month_index;
+    var year;
+    if (month_index > 11) {
+      year = current_date.getFullYear()+1;
+      month = month - 12;
+    } else {
+      year = current_date.getFullYear();
+    }
+    console.log("(Year, Month): " + year + ", " + month);
+    var d = new Date(year, month),
       month = d.getMonth(),
       wednesdays = [];
 
@@ -26,7 +39,7 @@
       wednesdays.push(new Date(d.getTime()));
       d.setDate(d.getDate() + 7);
     }
-
+    console.log(wednesdays);
     return wednesdays;
   }
 
