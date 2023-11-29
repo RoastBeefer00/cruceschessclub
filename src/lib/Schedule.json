@@ -175,6 +175,14 @@
     {
       "name": "Mesilla Valley Brewing",
       "address": "400 S. Compress Rd. Suite J, Las Cruces, NM 88005"
+    },
+    {
+      "name": "Cancelled",
+      "address": "Cancelled"
+    },
+    {
+      "name": "Valley Pizza",
+      "address": "3100 W Picacho Ave, Las Cruces, NM 88007"
     }
   ],
   "December": [
