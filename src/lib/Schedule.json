@@ -47,6 +47,14 @@
     {
       "name": "IHOP",
       "address": "2900 N Telshor Blvd, Las Cruces, NM 88011"
+    },
+    {
+      "name": "Bosque Brewing",
+      "address": "901 E University Ave Bldg 945 Ste 3-A, Las Cruces, NM 88001"
+    },
+    {
+      "name": "Spotted Dog Brewery",
+      "address": "2920 Avenida de Mesilla, Las Cruces, NM 88005"
     }
   ],
   "April": [
