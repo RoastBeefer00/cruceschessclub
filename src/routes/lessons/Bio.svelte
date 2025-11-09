@@ -2,29 +2,27 @@
     export let person;
 </script>
 
-<div class="column">
-    <div class="box m-3">
-        <div class="columns is-mobile">
-            <div class="column is-one-third is-align-self-center">
-                <p class="image is-flex-grow-0">
-                    <img src="{person.Picture}" alt="coach">
-                </p>
-            </div>
-            <div class="column">
-                <div class="hero is-dark p-3">
-                    <h3 class="title">{person.Name}</h3>
-                </div>
+<div class="bg-white rounded-lg shadow-md m-3 overflow-hidden">
+    <div class="flex flex-row items-center">
+        <div class="w-1/3 flex-shrink-0 p-4">
+            <div class="flex items-center justify-center">
+                <img src="{person.Picture}" alt="coach" class="rounded-lg w-full h-auto object-cover">
             </div>
         </div>
-        <div class="hero">
-            <h4 class="title is-underlined">Strengths</h4>
-            <ul>
-                {#each person.Strengths as strength}
-                    <li>{strength}</li>
-                {/each}
-            </ul>
-            <p class="mt-5">{person.Phone}</p>
-            <p> {person.Email}</p>
+        <div class="flex-1">
+            <div class="bg-gray-900 text-white p-4 rounded-r-lg">
+                <h3 class="text-2xl font-bold">{person.Name}</h3>
+            </div>
         </div>
+    </div>
+    <div class="p-6">
+        <h4 class="text-xl font-bold underline mb-3">Strengths</h4>
+        <ul class="list-disc list-inside space-y-1 mb-5">
+            {#each person.Strengths as strength}
+                <li class="text-gray-700">{strength}</li>
+            {/each}
+        </ul>
+        <p class="mt-5 text-gray-800 font-medium">{person.Phone}</p>
+        <p class="text-gray-800">{person.Email}</p>
     </div>
 </div>

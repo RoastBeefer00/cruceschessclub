@@ -1,6 +1,6 @@
 {
-  "name": "chessclub-bulma",
-  "version": "0.0.1",
+  "name": "cruceschessclub",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
     "dev": "vite dev",
@@ -8,18 +8,19 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@sveltejs/adapter-auto": "^2.0.0",
-    "@sveltejs/kit": "^1.5.0",
-    "bulma": "^0.9.4",
-    "sass": "^1.53.0",
-    "svelte": "^3.54.0",
+    "@sveltejs/adapter-auto": "^7.0.0",
+    "@sveltejs/kit": "^2.48.4",
+    "svelte": "^5.43.5",
     "svelte-carousel": "^1.0.25",
-    "svelte-preprocess": "^4.10.7",
-    "vite": "^4.2.0"
+    "svelte-preprocess": "^6.0.3",
+    "vite": "^7.2.2"
   },
   "type": "module",
   "dependencies": {
+    "@tailwindcss/vite": "^4.1.17",
     "fontawesome-free": "^1.0.4",
-    "svelte-resize-observer": "^2.0.0"
+    "npm-check-updates": "^19.1.2",
+    "svelte-resize-observer": "^2.0.0",
+    "tailwindcss": "^4.1.17"
   }
 }
