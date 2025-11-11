@@ -96,24 +96,24 @@
         >
           Schedule
         </a>
-        <a
-          href="/gallery"
-          class="px-4 py-2 rounded hover:bg-gray-800 transition-colors {path ===
-          '/gallery'
-            ? 'bg-gray-800'
-            : ''}"
-        >
-          Gallery
-        </a>
-        <a
-          href="/tournaments"
-          class="px-4 py-2 rounded hover:bg-gray-800 transition-colors {path ===
-          '/tournaments'
-            ? 'bg-gray-800'
-            : ''}"
-        >
-          Tournaments
-        </a>
+        <!-- <a -->
+        <!--   href="/gallery" -->
+        <!--   class="px-4 py-2 rounded hover:bg-gray-800 transition-colors {path === -->
+        <!--   '/gallery' -->
+        <!--     ? 'bg-gray-800' -->
+        <!--     : ''}" -->
+        <!-- > -->
+        <!--   Gallery -->
+        <!-- </a> -->
+        <!-- <a -->
+        <!--   href="/tournaments" -->
+        <!--   class="px-4 py-2 rounded hover:bg-gray-800 transition-colors {path === -->
+        <!--   '/tournaments' -->
+        <!--     ? 'bg-gray-800' -->
+        <!--     : ''}" -->
+        <!-- > -->
+        <!--   Tournaments -->
+        <!-- </a> -->
       </div>
     </div>
 
@@ -150,26 +150,26 @@
         >
           Schedule
         </a>
-        <a
-          href="/gallery"
-          class="px-4 py-2 rounded hover:bg-gray-800 transition-colors {path ===
-          '/gallery'
-            ? 'bg-gray-800'
-            : ''}"
-          on:click={toggleBurger}
-        >
-          Gallery
-        </a>
-        <a
-          href="/tournaments"
-          class="px-4 py-2 rounded hover:bg-gray-800 transition-colors {path ===
-          '/tournaments'
-            ? 'bg-gray-800'
-            : ''}"
-          on:click={toggleBurger}
-        >
-          Tournaments
-        </a>
+        <!-- <a -->
+        <!--   href="/gallery" -->
+        <!--   class="px-4 py-2 rounded hover:bg-gray-800 transition-colors {path === -->
+        <!--   '/gallery' -->
+        <!--     ? 'bg-gray-800' -->
+        <!--     : ''}" -->
+        <!--   on:click={toggleBurger} -->
+        <!-- > -->
+        <!--   Gallery -->
+        <!-- </a> -->
+        <!-- <a -->
+        <!--   href="/tournaments" -->
+        <!--   class="px-4 py-2 rounded hover:bg-gray-800 transition-colors {path === -->
+        <!--   '/tournaments' -->
+        <!--     ? 'bg-gray-800' -->
+        <!--     : ''}" -->
+        <!--   on:click={toggleBurger} -->
+        <!-- > -->
+        <!--   Tournaments -->
+        <!-- </a> -->
       </div>
     </div>
   </div>
