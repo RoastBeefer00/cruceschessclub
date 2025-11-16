@@ -58,13 +58,14 @@
     <div class="max-w-3xl mx-auto">
       <div class="text-center mb-6">
         <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
-          Upcoming Sessions
+          Join us every Wednesday evening
         </h2>
-        <p class="text-gray-600">Join us every Wednesday evening</p>
+        <!-- <p class="text-gray-600">Join us every Wednesday evening</p> -->
       </div>
       <Calendar
         month={current_date.getMonth()}
         useGoogleCalendar={true}
+        nextEventOnly={true}
         serverEvents={data.calendarEvents}
       />
     </div>

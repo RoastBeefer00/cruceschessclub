@@ -15,16 +15,32 @@
     month_name = months[month];
   }
   let calendarEvents = [];
+  let sortedEvents = [];
   let loading = false;
   let error = null;
 
   // Use server-loaded events if available
   if (serverEvents) {
     calendarEvents = Array.isArray(serverEvents) ? serverEvents : [];
+    sortedEvents = getSortedEvents(calendarEvents);
     console.log(
       "🔍 [Calendar Debug] Using server-loaded events:",
       calendarEvents.length,
     );
+  }
+
+  function getDayName(dateStr, locale) {
+    var date = new Date(dateStr);
+    return date.toLocaleDateString(locale, { weekday: "long" });
+  }
+
+  function getSortedEvents(events) {
+    return events
+      .map((event) => ({
+        ...event,
+        dateObj: new Date(event.start.dateTime || event.start.date),
+      }))
+      .sort((a, b) => a.dateObj - b.dateObj);
   }
 
   function getWednesdays(month_index) {
@@ -138,6 +154,7 @@
 
         const data = await response.json();
         calendarEvents = data.items || [];
+        sortedEvents = getSortedEvents(calendarEvents);
 
         console.log("🔍 [Calendar Debug] Response data:", data);
         console.log(
@@ -175,14 +192,16 @@
 <div
   class="bg-white rounded-xl shadow-lg m-4 overflow-hidden border border-gray-200"
 >
-  <div class="bg-gradient-to-r from-gray-800 to-gray-900 text-white p-4 md:p-6">
-    <h2
-      class="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-center"
-    >
-      {month_name}
-    </h2>
-    <div class="h-1 w-24 bg-white/30 rounded-full mt-3 mx-auto"></div>
-  </div>
+  {#if !nextEventOnly}
+    <div class="bg-linear-to-r from-gray-800 to-gray-900 text-white p-4 md:p-6">
+      <h2
+        class="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-center"
+      >
+        {month_name}
+      </h2>
+      <div class="h-1 w-24 bg-white/30 rounded-full mt-3 mx-auto"></div>
+    </div>
+  {/if}
 
   {#if loading}
     <div class="text-center p-8 text-gray-600">
@@ -222,17 +241,171 @@
         <span class="font-medium">Error: {error}</span>
       </div>
     </div>
+  {:else if nextEventOnly}
+    {#if calendarEvents.length > 0}
+      {@const event = calendarEvents[0]}
+      {@const eventDate = new Date(event.start.dateTime || event.start.date)}
+      <div class="p-8 md:p-12 lg:p-16 bg-gradient-to-br from-gray-50 to-white">
+        <div class="max-w-3xl mx-auto text-center space-y-6">
+          <div
+            class="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wide"
+          >
+            Next Event
+          </div>
+
+          <h3
+            class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight"
+          >
+            {event.summary}
+          </h3>
+
+          <div
+            class="flex flex-col md:flex-row items-center justify-center gap-6 text-lg md:text-xl text-gray-700"
+          >
+            <div class="flex items-center gap-2">
+              <svg
+                class="w-6 h-6 text-blue-600 flex-shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                />
+              </svg>
+              <span class="font-semibold">
+                <span class="hidden md:inline">
+                  {eventDate.toLocaleDateString("en-US", {
+                    weekday: "long",
+                    month: "long",
+                    day: "numeric",
+                    year: "numeric",
+                  })}
+                </span>
+                <span class="md:hidden">
+                  {eventDate.toLocaleDateString("en-US", {
+                    weekday: "short",
+                    month: "short",
+                    day: "numeric",
+                    year: "numeric",
+                  })}
+                </span>
+              </span>
+            </div>
+
+            {#if event.start.dateTime}
+              <div class="flex items-center gap-2">
+                <svg
+                  class="w-6 h-6 text-blue-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <span class="font-semibold">
+                  {eventDate.toLocaleTimeString("en-US", {
+                    hour: "numeric",
+                    minute: "2-digit",
+                  })}
+                </span>
+              </div>
+            {/if}
+          </div>
+
+          {#if event.location}
+            <a
+              href="https://www.google.com/maps/search/?api=1&query={encodeURIComponent(
+                event.location,
+              )}"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Open in Google Maps"
+              class="block bg-white border-2 border-gray-200 rounded-lg p-6 shadow-sm hover:border-blue-400 hover:shadow-md transition-all cursor-pointer"
+            >
+              <div class="flex items-start justify-center gap-3">
+                <svg
+                  class="w-6 h-6 text-blue-600 mt-1 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+                <div class="text-left">
+                  <div
+                    class="text-sm text-gray-500 uppercase tracking-wide mb-1"
+                  >
+                    Location
+                  </div>
+                  <div class="text-lg md:text-xl font-medium text-gray-900">
+                    {event.location}
+                  </div>
+                </div>
+              </div>
+            </a>
+          {/if}
+
+          <!-- {#if event.description} -->
+          <!--   <div class="text-gray-700 text-base md:text-lg leading-relaxed mt-6"> -->
+          <!--     {event.description} -->
+          <!--   </div> -->
+          <!-- {/if} -->
+        </div>
+      </div>
+    {:else}
+      <div class="text-center p-12 text-gray-500">
+        <svg
+          class="w-16 h-16 mx-auto mb-4 text-gray-300"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+          />
+        </svg>
+        <p class="text-xl font-medium">No upcoming events scheduled</p>
+      </div>
+    {/if}
   {:else}
     <div class="overflow-x-auto">
       <table class="w-full text-sm md:text-base">
         <thead
-          class="bg-gradient-to-r from-gray-100 to-gray-50 border-b-2 border-gray-200"
+          class="bg-linear-to-r from-gray-100 to-gray-50 border-b-2 border-gray-200"
         >
           <tr>
             <th
               class="px-2 md:px-4 lg:px-6 py-3 md:py-4 text-left text-xs md:text-sm font-bold text-gray-700 uppercase tracking-wider"
             >
               Date
+            </th>
+            <th
+              class="px-2 md:px-4 lg:px-6 py-3 md:py-4 text-left text-xs md:text-sm font-bold text-gray-700 uppercase tracking-wider"
+            >
+              Time
             </th>
             <th
               class="px-2 md:px-4 lg:px-6 py-3 md:py-4 text-left text-xs md:text-sm font-bold text-gray-700 uppercase tracking-wider"
@@ -247,20 +420,42 @@
           </tr>
         </thead>
         <tbody class="divide-y divide-gray-200">
-          {#each wednesdays as wednesday}
-            {#if calendarEvents.length > 0}
-              {@const event = getEventForDate(wednesday)}
+          {#if sortedEvents.length > 0}
+            {#each sortedEvents as event}
               <tr class="hover:bg-gray-50 transition-colors">
                 <td
-                  class="px-2 md:px-4 lg:px-6 py-3 md:py-4 text-gray-800 font-medium whitespace-nowrap text-xs md:text-base"
+                  class="px-2 md:px-4 lg:px-6 py-3 md:py-4 text-gray-800 font-medium text-xs md:text-base"
                 >
-                  {wednesday.getMonth() +
-                    1}/{wednesday.getDate()}/{wednesday.getFullYear()}
+                  <div
+                    class="flex flex-col md:flex-row md:items-center md:gap-1"
+                  >
+                    <span class="whitespace-nowrap">
+                      {event.dateObj.getMonth() +
+                        1}/{event.dateObj.getDate()}/{event.dateObj.getFullYear()}
+                    </span>
+                    <span class="text-gray-400 text-xs md:text-base"
+                      >({getDayName(event.dateObj.getDate(), "en-US")})</span
+                    >
+                  </div>
                 </td>
                 <td
                   class="px-2 md:px-4 lg:px-6 py-3 md:py-4 text-xs md:text-base"
                 >
-                  {#if event?.summary}
+                  {#if event.start?.dateTime}
+                    <span class="text-gray-700"
+                      >{event.dateObj.toLocaleTimeString("en-US", {
+                        hour: "numeric",
+                        minute: "2-digit",
+                      })}</span
+                    >
+                  {:else}
+                    <span class="text-gray-400 italic">TBD</span>
+                  {/if}
+                </td>
+                <td
+                  class="px-2 md:px-4 lg:px-6 py-3 md:py-4 text-xs md:text-base"
+                >
+                  {#if event.summary}
                     <span class="text-gray-700">{event.summary}</span>
                   {:else}
                     <span class="text-gray-400 italic">TBD</span>
@@ -269,14 +464,26 @@
                 <td
                   class="px-2 md:px-4 lg:px-6 py-3 md:py-4 text-xs md:text-base"
                 >
-                  {#if event?.location}
-                    <span class="text-gray-700">{event.location}</span>
+                  {#if event.location}
+                    <a
+                      href="https://www.google.com/maps/search/?api=1&query={encodeURIComponent(
+                        event.location,
+                      )}"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="Open in Google Maps"
+                      class="text-blue-600 hover:text-blue-800 hover:underline"
+                    >
+                      {event.location}
+                    </a>
                   {:else}
                     <span class="text-gray-400 italic">TBD</span>
                   {/if}
                 </td>
               </tr>
-            {:else}
+            {/each}
+          {:else}
+            {#each wednesdays as wednesday}
               <tr class="hover:bg-gray-50 transition-colors">
                 <td
                   class="px-2 md:px-4 lg:px-6 py-3 md:py-4 text-gray-800 font-medium whitespace-nowrap text-xs md:text-base"
@@ -292,9 +499,13 @@
                   class="px-2 md:px-4 lg:px-6 py-3 md:py-4 text-gray-400 italic text-xs md:text-base"
                   >TBD</td
                 >
+                <td
+                  class="px-2 md:px-4 lg:px-6 py-3 md:py-4 text-gray-400 italic text-xs md:text-base"
+                  >TBD</td
+                >
               </tr>
-            {/if}
-          {/each}
+            {/each}
+          {/if}
         </tbody>
       </table>
     </div>

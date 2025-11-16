@@ -3,18 +3,19 @@ import { env } from '$env/dynamic/private';
 export async function load() {
   const calendarId = env.GOOGLE_CALENDAR_ID || 'primary';
   const apiKey = env.GOOGLE_CALENDAR_API_KEY;
-  
+
   if (!apiKey) {
     return { calendarEvents: [] };
   }
 
   const currentDate = new Date();
   const month = currentDate.getMonth();
+  const threeMonthsLater = month + 3 > 11 ? month + 3 - 12 : month + 3;
   const year = currentDate.getFullYear();
-  
-  const timeMin = new Date(year, month, 1).toISOString();
-  const timeMax = new Date(year, month + 1, 0, 23, 59, 59).toISOString();
-  
+
+  const timeMin = currentDate.toISOString();
+  const timeMax = currentDate.setMonth(threeMonthsLater);
+
   const params = new URLSearchParams({
     key: apiKey,
     timeMin,
