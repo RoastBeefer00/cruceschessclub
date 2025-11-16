@@ -35,11 +35,31 @@
   }
 
   function getSortedEvents(events) {
+    // Get the target year and month for this component instance
+    const targetYear =
+      month > 11 ? new Date().getFullYear() + 1 : new Date().getFullYear();
+    const targetMonth = month > 11 ? month - 12 : month;
+
     return events
-      .map((event) => ({
-        ...event,
-        dateObj: new Date(event.start.dateTime || event.start.date),
-      }))
+      .map((event) => {
+        const dateStr = event.start.date || event.start.dateTime;
+        // For all-day events, parse without timezone conversion
+        const dateObj = event.start.date
+          ? new Date(event.start.date + "T00:00:00") // Force local timezone
+          : new Date(event.start.dateTime);
+
+        return {
+          ...event,
+          dateObj,
+        };
+      })
+      .filter((event) => {
+        // Only include events that match this component's month
+        return (
+          event.dateObj.getFullYear() === targetYear &&
+          event.dateObj.getMonth() === targetMonth
+        );
+      })
       .sort((a, b) => a.dateObj - b.dateObj);
   }
 
