@@ -33,11 +33,16 @@ function Calendar($$renderer, $$props) {
       sortedEvents = getSortedEvents(calendarEvents);
     }
     function parseEventDate(event) {
-      if (event.start.dateTime) {
-        return new Date(event.start.dateTime);
+      const start = event?.start;
+      if (!start) return /* @__PURE__ */ new Date(NaN);
+      if (start.dateTime) {
+        return new Date(start.dateTime);
       }
-      const [y, m, d] = event.start.date.split("-").map(Number);
-      return new Date(y, m - 1, d);
+      if (start.date) {
+        const [y, m, d] = start.date.split("-").map(Number);
+        return new Date(y, m - 1, d);
+      }
+      return /* @__PURE__ */ new Date(NaN);
     }
     function getSortedEvents(events) {
       return events.map((event) => ({ ...event, dateObj: parseEventDate(event) })).sort((a, b) => a.dateObj - b.dateObj);
