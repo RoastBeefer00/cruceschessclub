@@ -25,11 +25,16 @@
   }
 
   function parseEventDate(event) {
-    if (event.start.dateTime) {
-      return new Date(event.start.dateTime);
+    const start = event?.start;
+    if (!start) return new Date(NaN);
+    if (start.dateTime) {
+      return new Date(start.dateTime);
     }
-    const [y, m, d] = event.start.date.split("-").map(Number);
-    return new Date(y, m - 1, d);
+    if (start.date) {
+      const [y, m, d] = start.date.split("-").map(Number);
+      return new Date(y, m - 1, d);
+    }
+    return new Date(NaN);
   }
 
   function getSortedEvents(events) {
