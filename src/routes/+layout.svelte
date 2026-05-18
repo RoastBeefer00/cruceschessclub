@@ -40,7 +40,7 @@
         href="/"
         class="flex items-center gap-3 group transition-soft"
       >
-        <img src="/ccc.png" alt="" class="h-7 w-7 brightness-0" />
+        <img src="/ccc.png" alt="" class="h-7 w-7 brightness-0 dark:invert" />
         <span
           class="font-display text-lg md:text-xl text-ink group-hover:text-accent transition-soft"
         >

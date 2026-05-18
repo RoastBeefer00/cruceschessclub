@@ -6,7 +6,7 @@
   <div class="max-w-6xl mx-auto px-6 py-14 grid gap-10 md:grid-cols-12">
     <div class="md:col-span-4 space-y-3">
       <div class="flex items-center gap-3">
-        <img src="/ccc.png" alt="" class="h-8 w-8" />
+        <img src="/ccc.png" alt="" class="h-8 w-8 brightness-0 invert dark:invert-0" />
         <span class="font-display text-xl">Cruces Chess Club</span>
       </div>
       <p class="text-sm text-paper/70 max-w-xs leading-relaxed">
