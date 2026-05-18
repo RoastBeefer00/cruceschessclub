@@ -1,180 +1,126 @@
 <script>
   import "../app.css";
   import { page } from "$app/stores";
+  import Footer from "$lib/Footer.svelte";
 
   let burgerOpen = false;
-  let selected = 0;
 
   function toggleBurger() {
     burgerOpen = !burgerOpen;
   }
 
-  function handleSelect(id) {
-    selected = id;
-    toggleBurger();
+  function closeBurger() {
+    burgerOpen = false;
   }
 
   $: path = $page.url.pathname;
+
+  const links = [
+    { href: "/about", label: "About" },
+    { href: "/lessons", label: "Lessons" },
+    { href: "/schedule", label: "Schedule" },
+    { href: "/donate", label: "Donate" },
+  ];
 </script>
 
-<nav
-  class="bg-gray-900 text-white fixed top-0 left-0 right-0 z-50"
-  aria-label="main navigation"
+<a
+  href="#main"
+  class="sr-only focus:not-sr-only fixed top-2 left-2 z-[60] bg-ink text-paper px-3 py-2 rounded-md text-sm"
 >
-  <div class="max-w-7xl mx-auto px-4">
+  Skip to content
+</a>
+
+<nav
+  class="bg-paper/85 backdrop-blur border-b border-line text-ink sticky top-0 z-50"
+  aria-label="Main navigation"
+>
+  <div class="max-w-6xl mx-auto px-6">
     <div class="flex justify-between items-center h-16">
-      <!-- Brand section -->
-      <div class="flex items-center space-x-2">
-        <a
-          class="flex items-center hover:bg-gray-800 px-3 py-2 rounded transition-colors"
-          href="/"
-        >
-          <img src="ccc.png" width="30" height="40" alt="chess" class="mr-2" />
-        </a>
-        <a
-          href="/"
-          class="flex items-center hover:bg-gray-800 px-3 py-2 rounded transition-colors text-2xl font-bold"
+      <a
+        href="/"
+        class="flex items-center gap-3 group transition-soft"
+      >
+        <img src="/ccc.png" alt="" class="h-7 w-7 brightness-0" />
+        <span
+          class="font-display text-lg md:text-xl text-ink group-hover:text-accent transition-soft"
         >
           Cruces Chess Club
-        </a>
-      </div>
+        </span>
+      </a>
 
-      <!-- Mobile menu button -->
       <button
         type="button"
-        class="md:hidden flex flex-col justify-center items-center w-10 h-10 space-y-1.5 hover:bg-gray-800 rounded transition-colors"
-        aria-label="menu"
+        class="md:hidden flex flex-col justify-center items-center w-10 h-10 space-y-1.5 transition-soft"
+        aria-label="Toggle navigation menu"
         aria-expanded={burgerOpen}
+        aria-controls="mobile-menu"
         on:click={toggleBurger}
       >
         <span
-          class="block w-6 h-0.5 bg-white transition-all {burgerOpen
+          class="block w-6 h-px bg-ink transition-soft {burgerOpen
             ? 'rotate-45 translate-y-2'
             : ''}"
           aria-hidden="true"
         ></span>
         <span
-          class="block w-6 h-0.5 bg-white transition-opacity {burgerOpen
+          class="block w-6 h-px bg-ink transition-soft {burgerOpen
             ? 'opacity-0'
             : ''}"
           aria-hidden="true"
         ></span>
         <span
-          class="block w-6 h-0.5 bg-white transition-all {burgerOpen
+          class="block w-6 h-px bg-ink transition-soft {burgerOpen
             ? '-rotate-45 -translate-y-2'
             : ''}"
           aria-hidden="true"
         ></span>
       </button>
 
-      <!-- Desktop menu -->
-      <div class="hidden md:flex md:items-center md:space-x-1">
-        <a
-          href="/about"
-          class="px-4 py-2 rounded hover:bg-gray-800 transition-colors {path ===
-          '/about'
-            ? 'bg-gray-800'
-            : ''}"
-        >
-          About
-        </a>
-        <a
-          href="/lessons"
-          class="px-4 py-2 rounded hover:bg-gray-800 transition-colors {path ===
-          '/lessons'
-            ? 'bg-gray-800'
-            : ''}"
-        >
-          Lessons
-        </a>
-        <a
-          href="/schedule"
-          class="px-4 py-2 rounded hover:bg-gray-800 transition-colors {path ===
-          '/schedule'
-            ? 'bg-gray-800'
-            : ''}"
-        >
-          Schedule
-        </a>
-        <!-- <a -->
-        <!--   href="/gallery" -->
-        <!--   class="px-4 py-2 rounded hover:bg-gray-800 transition-colors {path === -->
-        <!--   '/gallery' -->
-        <!--     ? 'bg-gray-800' -->
-        <!--     : ''}" -->
-        <!-- > -->
-        <!--   Gallery -->
-        <!-- </a> -->
-        <!-- <a -->
-        <!--   href="/tournaments" -->
-        <!--   class="px-4 py-2 rounded hover:bg-gray-800 transition-colors {path === -->
-        <!--   '/tournaments' -->
-        <!--     ? 'bg-gray-800' -->
-        <!--     : ''}" -->
-        <!-- > -->
-        <!--   Tournaments -->
-        <!-- </a> -->
-      </div>
+      <ul class="hidden md:flex items-center gap-1 text-sm">
+        {#each links as link}
+          <li>
+            <a
+              href={link.href}
+              class="relative px-4 py-2 transition-soft hover:text-accent
+                {path === link.href
+                ? 'text-ink after:absolute after:left-3 after:right-3 after:-bottom-0.5 after:h-px after:bg-accent'
+                : 'text-ink-soft'}"
+            >
+              {link.label}
+            </a>
+          </li>
+        {/each}
+      </ul>
     </div>
 
-    <!-- Mobile menu -->
-    <div class="md:hidden {burgerOpen ? 'block' : 'hidden'} pb-4">
-      <div class="flex flex-col space-y-1">
-        <a
-          href="/about"
-          class="px-4 py-2 rounded hover:bg-gray-800 transition-colors {path ===
-          '/about'
-            ? 'bg-gray-800'
-            : ''}"
-          on:click={toggleBurger}
-        >
-          About
-        </a>
-        <a
-          href="/lessons"
-          class="px-4 py-2 rounded hover:bg-gray-800 transition-colors {path ===
-          '/lessons'
-            ? 'bg-gray-800'
-            : ''}"
-          on:click={toggleBurger}
-        >
-          Lessons
-        </a>
-        <a
-          href="/schedule"
-          class="px-4 py-2 rounded hover:bg-gray-800 transition-colors {path ===
-          '/schedule'
-            ? 'bg-gray-800'
-            : ''}"
-          on:click={toggleBurger}
-        >
-          Schedule
-        </a>
-        <!-- <a -->
-        <!--   href="/gallery" -->
-        <!--   class="px-4 py-2 rounded hover:bg-gray-800 transition-colors {path === -->
-        <!--   '/gallery' -->
-        <!--     ? 'bg-gray-800' -->
-        <!--     : ''}" -->
-        <!--   on:click={toggleBurger} -->
-        <!-- > -->
-        <!--   Gallery -->
-        <!-- </a> -->
-        <!-- <a -->
-        <!--   href="/tournaments" -->
-        <!--   class="px-4 py-2 rounded hover:bg-gray-800 transition-colors {path === -->
-        <!--   '/tournaments' -->
-        <!--     ? 'bg-gray-800' -->
-        <!--     : ''}" -->
-        <!--   on:click={toggleBurger} -->
-        <!-- > -->
-        <!--   Tournaments -->
-        <!-- </a> -->
-      </div>
+    <div
+      id="mobile-menu"
+      class="md:hidden overflow-hidden transition-[max-height] duration-300 ease-out {burgerOpen
+        ? 'max-h-96 pb-4'
+        : 'max-h-0'}"
+    >
+      <ul class="flex flex-col gap-1 text-base">
+        {#each links as link}
+          <li>
+            <a
+              href={link.href}
+              class="block px-4 py-2 rounded-md transition-soft
+                {path === link.href
+                ? 'text-ink bg-paper-2'
+                : 'text-ink-soft hover:bg-paper-2'}"
+              on:click={closeBurger}
+            >
+              {link.label}
+            </a>
+          </li>
+        {/each}
+      </ul>
     </div>
   </div>
 </nav>
 
-<div class="mt-16">
+<main id="main" class="min-h-[60vh]">
   <slot />
-</div>
+</main>
+
+<Footer />

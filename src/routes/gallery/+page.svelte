@@ -1,12 +1,12 @@
 <script>
   import { writable } from "svelte/store";
   import Carousel from "svelte-carousel";
+  import Hero from "$lib/Hero.svelte";
 
   const images = writable([]);
   let loading = true;
   const imageModules = import.meta.glob("/static/club_pics/*.jpeg");
 
-  // Load all images before rendering
   async function loadImages() {
     const imagePromises = Object.entries(imageModules).map(
       async ([path, resolver]) => {
@@ -23,42 +23,64 @@
   loadImages();
 </script>
 
-<div class="container mx-auto p-6 max-w-7xl">
-  <div
-    class="bg-gray-900 text-white rounded-lg shadow-lg p-6 mx-auto max-w-4xl"
-  >
-    <h2 class="text-4xl md:text-5xl font-bold text-center">Gallery</h2>
-  </div>
-</div>
+<svelte:head>
+  <title>Gallery — Cruces Chess Club</title>
+  <meta
+    name="description"
+    content="Photos from Cruces Chess Club meetings, tournaments, and events."
+  />
+  <meta property="og:title" content="Gallery — Cruces Chess Club" />
+</svelte:head>
 
-<div class="flex justify-center mt-6">
-  <div class="w-full md:w-2/3 bg-white rounded-lg shadow-md p-4 mx-auto my-3">
+<Hero
+  eyebrow="Photos"
+  title="Club"
+  accent="moments."
+  lead="Wednesday meets, tournaments, and the occasional after-game."
+  align="left"
+/>
+
+<section
+  class="max-w-5xl mx-auto px-6 py-16"
+  aria-label="Photo gallery"
+>
+  <div class="border border-line rounded-md bg-paper-2/40 overflow-hidden">
     {#if loading}
-      <div class="flex items-center justify-center h-[60vh] text-gray-500">
-        <p>Loading images...</p>
+      <div
+        class="aspect-[16/10] flex items-center justify-center text-mute"
+        role="status"
+        aria-live="polite"
+      >
+        <span class="animate-pulse text-sm uppercase tracking-[0.22em]">
+          Loading images…
+        </span>
       </div>
     {:else if $images.length > 0}
       <Carousel
         autoplay
-        autoplayDuration={3000}
+        autoplayDuration={6000}
         pauseOnFocus
         arrows={true}
         dots={true}
       >
-        {#each $images as src}
-          <div class="flex items-center justify-center h-[60vh]">
+        {#each $images as src, i}
+          <div
+            class="aspect-[16/10] flex items-center justify-center"
+            aria-roledescription="slide"
+            aria-label={`Photo ${i + 1} of ${$images.length}`}
+          >
             <img
-              class="max-h-[50vh] max-w-[75vw] h-auto w-auto rounded object-contain"
               {src}
-              alt="club"
+              alt={`Cruces Chess Club photo ${i + 1}`}
+              class="max-h-[70vh] w-auto max-w-full object-contain"
             />
           </div>
         {/each}
       </Carousel>
     {:else}
-      <div class="flex items-center justify-center h-[60vh] text-gray-500">
+      <div class="aspect-[16/10] flex items-center justify-center text-mute">
         <p>No images found</p>
       </div>
     {/if}
   </div>
-</div>
+</section>

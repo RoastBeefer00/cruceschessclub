@@ -1,57 +1,76 @@
-<section class="min-h-screen">
-  <!-- Hero Section with Background -->
-  <div
-    class="relative bg-gradient-to-br from-gray-50 via-white to-gray-100 border-b border-gray-200 shadow-sm"
-  >
-    <div class="container mx-auto px-4 pt-12 pb-16 max-w-6xl">
-      <div class="text-center space-y-6">
-        <h1 class="text-5xl md:text-7xl font-bold text-gray-900 tracking-tight">
-          About
-          <span
-            class="block mt-2 bg-gradient-to-r from-gray-700 to-gray-900 bg-clip-text text-transparent"
-          >
-            Cruces Chess Club
-          </span>
-        </h1>
-        <p
-          class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
-        >
-          A Las Cruces based organization dedicated to serving our chess
-          community through financial support and community outreach.
-        </p>
-      </div>
-    </div>
-  </div>
+<script>
+  import Hero from "$lib/Hero.svelte";
+</script>
 
-  <!-- Content Section -->
-  <div class="container mx-auto px-4 pt-16 pb-16 max-w-6xl">
-    <!-- Mission Statement -->
-    <div class="max-w-4xl mx-auto mb-16">
-      <div
-        class="bg-white rounded-2xl shadow-lg p-8 md:p-12 border border-gray-100"
+<svelte:head>
+  <title>About — Cruces Chess Club</title>
+  <meta
+    name="description"
+    content="A Las Cruces organization dedicated to serving our chess community through financial support and outreach."
+  />
+  <meta property="og:title" content="About — Cruces Chess Club" />
+</svelte:head>
+
+<Hero
+  eyebrow="About the club"
+  title="A community"
+  accent="around the board."
+  lead="A Las Cruces organization dedicated to serving our chess community through financial support and outreach."
+  align="left"
+/>
+
+<section class="max-w-6xl mx-auto px-6 py-20">
+  <div class="grid gap-10 md:grid-cols-12">
+    <div class="md:col-span-8 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="block h-px w-10 bg-accent" aria-hidden="true"></span>
+        <span
+          class="text-xs uppercase tracking-[0.22em] text-accent font-medium"
+        >
+          Our mission
+        </span>
+      </div>
+      <p
+        class="font-display text-2xl md:text-3xl text-ink leading-snug max-w-[36ch]"
       >
-        <h2
-          class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 text-center"
-        >
-          Our Mission
-        </h2>
-        <p class="text-lg md:text-xl text-gray-700 leading-relaxed text-center">
-          To bring the community together to have fun and enjoy chess. We
-          support our members by providing chess boards and timers, as well as
-          enabling them to travel and compete at tournaments.
-        </p>
-      </div>
+        To bring the community together to have fun and enjoy chess.
+      </p>
+      <p
+        class="text-ink-soft text-lg leading-relaxed max-w-[60ch]"
+      >
+        We support our members by providing chess boards and timers, and by
+        enabling them to travel and compete at tournaments outside of Las
+        Cruces. Every dollar that comes through the club goes back into
+        equipment, entry fees, and outreach.
+      </p>
     </div>
 
-    <!-- Community Photo -->
-    <div class="max-w-4xl mx-auto">
-      <figure class="rounded-2xl overflow-hidden shadow-xl">
-        <img
-          class="w-full h-auto object-cover"
-          src="club_pics/image7(1).jpeg"
-          alt="Cruces Chess Club members"
-        />
-      </figure>
-    </div>
+    <aside
+      class="md:col-span-4 border-l-2 border-accent pl-6 self-start"
+    >
+      <p
+        class="font-display italic text-xl text-ink-soft leading-snug"
+      >
+        “Bringing the community together to enjoy chess.”
+      </p>
+      <p class="mt-3 text-xs uppercase tracking-[0.22em] text-mute">
+        — Club founders
+      </p>
+    </aside>
   </div>
+</section>
+
+<section class="bg-paper-2 border-y border-line">
+  <figure>
+    <img
+      src="/club_pics/image7(1).jpeg"
+      alt="Cruces Chess Club members at a club gathering"
+      class="w-full aspect-[21/9] object-cover"
+    />
+    <figcaption
+      class="max-w-6xl mx-auto px-6 py-4 text-sm italic text-mute"
+    >
+      Wednesday meets — Las Cruces, New Mexico.
+    </figcaption>
+  </figure>
 </section>
