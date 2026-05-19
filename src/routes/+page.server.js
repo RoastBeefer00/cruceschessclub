@@ -1,20 +1,28 @@
 import { env } from '$env/dynamic/private';
+import {
+  logException,
+  logHttpError,
+  logMissingKey,
+  logRequest,
+  logSuccess,
+} from '$lib/calendarLog.js';
+
+const SOURCE = 'home';
 
 export async function load() {
   const calendarId = env.GOOGLE_CALENDAR_ID || 'primary';
   const apiKey = env.GOOGLE_CALENDAR_API_KEY;
 
   if (!apiKey) {
+    logMissingKey(SOURCE);
     return { calendarEvents: [] };
   }
 
-  const currentDate = new Date();
-  const month = currentDate.getMonth();
-  const threeMonthsLater = month + 3 > 11 ? month + 3 - 12 : month + 3;
-  const year = currentDate.getFullYear();
-
-  const timeMin = currentDate.toISOString();
-  const timeMax = currentDate.setMonth(threeMonthsLater);
+  const now = new Date();
+  const timeMin = now.toISOString();
+  const timeMaxDate = new Date(now);
+  timeMaxDate.setMonth(timeMaxDate.getMonth() + 3);
+  const timeMax = timeMaxDate.toISOString();
 
   const params = new URLSearchParams({
     key: apiKey,
@@ -22,28 +30,26 @@ export async function load() {
     timeMax,
     singleEvents: 'true',
     orderBy: 'startTime',
-    maxResults: '50'
+    maxResults: '50',
   });
 
+  const url = `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(calendarId)}/events?${params}`;
+  logRequest(SOURCE, url, calendarId);
+
   try {
-    const response = await fetch(
-      `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(calendarId)}/events?${params}`,
-      {
-        headers: {
-          'Accept': 'application/json'
-        }
-      }
-    );
+    const response = await fetch(url, { headers: { Accept: 'application/json' } });
 
     if (!response.ok) {
-      console.error('Google Calendar API error');
+      await logHttpError(SOURCE, url, response);
       return { calendarEvents: [] };
     }
 
     const data = await response.json();
-    return { calendarEvents: data.items || [] };
+    const items = data.items || [];
+    logSuccess(SOURCE, items.length, { timeMin, timeMax });
+    return { calendarEvents: items };
   } catch (error) {
-    console.error('Error fetching calendar:', error);
+    logException(SOURCE, error, { calendarId });
     return { calendarEvents: [] };
   }
 }
