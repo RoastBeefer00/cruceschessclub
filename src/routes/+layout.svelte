@@ -2,6 +2,7 @@
   import "../app.css";
   import { page } from "$app/stores";
   import Footer from "$lib/Footer.svelte";
+  import ThemeToggle from "$lib/ThemeToggle.svelte";
 
   let burgerOpen = false;
 
@@ -76,21 +77,24 @@
         ></span>
       </button>
 
-      <ul class="hidden md:flex items-center gap-1 text-sm">
-        {#each links as link}
-          <li>
-            <a
-              href={link.href}
-              class="relative px-4 py-2 transition-soft hover:text-accent
-                {path === link.href
-                ? 'text-ink after:absolute after:left-3 after:right-3 after:-bottom-0.5 after:h-px after:bg-accent'
-                : 'text-ink-soft'}"
-            >
-              {link.label}
-            </a>
-          </li>
-        {/each}
-      </ul>
+      <div class="hidden md:flex items-center gap-3">
+        <ul class="flex items-center gap-1 text-sm">
+          {#each links as link}
+            <li>
+              <a
+                href={link.href}
+                class="relative px-4 py-2 transition-soft hover:text-accent
+                  {path === link.href
+                  ? 'text-ink after:absolute after:left-3 after:right-3 after:-bottom-0.5 after:h-px after:bg-accent'
+                  : 'text-ink-soft'}"
+              >
+                {link.label}
+              </a>
+            </li>
+          {/each}
+        </ul>
+        <ThemeToggle />
+      </div>
     </div>
 
     <div
@@ -115,6 +119,9 @@
           </li>
         {/each}
       </ul>
+      <div class="mt-3 px-4">
+        <ThemeToggle />
+      </div>
     </div>
   </div>
 </nav>
