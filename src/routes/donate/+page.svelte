@@ -9,7 +9,7 @@
 
   // TODO: replace mailto with real payment integration (Venmo / PayPal / Stripe)
   const donateMailto =
-    "mailto:roastbeefer000@gmail.com?subject=Cruces%20Chess%20Club%20donation";
+    "mailto:cruceschessclub@gmail.com?subject=Cruces%20Chess%20Club%20donation";
 </script>
 
 <svelte:head>
@@ -45,8 +45,8 @@
       </p>
       <p>
         Boards, clocks, and pieces wear out faster than you'd think with a busy
-        Wednesday meet. Donations keep the equipment fresh so any new player
-        can sit down and start a game.
+        Wednesday meet. Donations keep the equipment fresh so any new player can
+        sit down and start a game.
       </p>
       <p>
         Tournament entry fees are the biggest barrier for our junior members —
@@ -54,8 +54,8 @@
         outside Las Cruces.
       </p>
       <p>
-        Scholastic outreach: chess sets, instructional material, and after-school
-        coaching at local schools.
+        Scholastic outreach: chess sets, instructional material, and
+        after-school coaching at local schools.
       </p>
     </div>
 
@@ -118,8 +118,8 @@
         </summary>
         <p class="mt-3 text-ink-soft text-base leading-relaxed">
           <!-- TODO: confirm tax status -->
-          We're working on the paperwork. Reach out by email and we'll share
-          current status before your contribution.
+          We're working on the paperwork. Reach out by email and we'll share current
+          status before your contribution.
         </p>
       </details>
       <details class="group py-4">
