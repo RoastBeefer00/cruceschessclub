@@ -120,7 +120,7 @@
         {/each}
       </ul>
       <div class="mt-3 px-4">
-        <ThemeToggle />
+        <ThemeToggle inline={true} />
       </div>
     </div>
   </div>
