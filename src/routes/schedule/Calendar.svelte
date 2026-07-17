@@ -219,6 +219,15 @@
           </div>
         </a>
       {/if}
+
+      {#if event.description}
+        <div class="border-t border-line pt-6 space-y-1">
+          <div class="text-xs uppercase tracking-widest text-mute">Details</div>
+          <p class="text-ink-soft leading-relaxed whitespace-pre-line">
+            {event.description}
+          </p>
+        </div>
+      {/if}
     </article>
   {:else}
     <div
@@ -308,6 +317,11 @@
                     </span>
                   {/if}
                 </div>
+                {#if event.description}
+                  <p class="text-sm text-ink-soft whitespace-pre-line">
+                    {event.description}
+                  </p>
+                {/if}
               </div>
             </svelte:element>
           </li>
